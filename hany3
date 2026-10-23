@@ -1,375 +1,1136 @@
-
-Percakapan dengan Gemini
-berikan 1 konsep projek untuk saya yang baru selesai melaksanakan pelatihan tik tentang dunia kecantikan seperti skincare atau perawatan wajah berikan secara rinci beserta contoh hasil jadinya websitenya
-
-Berikut adalah 1 konsep proyek yang sangat cocok untuk Anda yang baru menyelesaikan pelatihan TIK (Teknologi Informasi dan Komunikasi). Proyek ini menggabungkan keahlian dasar pemrograman web/desain digital dengan industri kecantikan (skincare dan perawatan wajah).
-
-📌 Konsep Proyek: "GlowGuide" – Personal Skincare & Routine Recommendation Web App
- Deskripsi Singkat
-GlowGuide adalah aplikasi web interaktif yang membantu pengguna menemukan rutinitas skincare dan jenis produk perawatan wajah yang paling cocok berdasarkan tipe kulit (kering, berminyak, kombinasi, sensitif) dan keluhan wajah utama (jerawat, kusam, penuaan dini, bekas luka).
-
- Rincian Fitur Utama Aplikasi
-Kuis Interaktif Tipe Kulit (Skin Analyzer Quiz):
-
-Pengguna menjawab 3–4 pertanyaan sederhana (misal: kondisi kulit di siang hari, respons kulit terhadap produk baru, keluhan utama).
-
-Algoritma JavaScript sederhana menentukan tipe kulit & memberikan rekomendasi rutinitas.
-
-Daftar Rutinitas Pagi & Malam (AM/PM Routine Steps):
-
-Menampilkan tahapan penggunaan skincare secara runut (Pembersih 
-→ Toner 
-→ Serum 
-→ Pelembab 
-→ Sunscreen).
-
-Fitur checklist harian (Interactive Checklist) untuk menandai apakah rutinitas sudah dilakukan hari ini.
-
-Katalog Produk & Bahan Aktif (Active Ingredients Guide):
-
-Informasi interaktif tentang kandungan populer seperti Niacinamide, Salicylic Acid, Hyaluronic Acid, Retinol, serta fungsinya untuk kulit.
-
-Kalkulator Masa Kedaluwarsa Produk (PAO - Period After Opening Tracker):
-
-Pengguna dapat memasukkan tanggal membuka produk untuk menghitung kapan produk tersebut harus diganti.
-
- Modul TIK & Teknologi yang Digunakan
-HTML5 & CSS3 (Tailwind CSS/Bootstrap): Struktur layout yang responsive (bagus dibuka di HP maupun PC) dengan estetika visual ala brand skincare modern (warna pastel, bersih, minimalist).
-
-JavaScript (Vanilla JS / React JS):
-
-Logika kuis penentu tipe kulit.
-
-DOM Manipulation untuk menampilkan/menyembunyikan langkah rutinitas.
-
-Fitur Local Storage agar checklist rutinitas harian tersimpan meski browser ditutup.
-
-🌐 Contoh Hasil Jadi Website (Kode & Tampilan)
-Berikut adalah contoh hasil kode HTML, CSS, dan JavaScript lengkap yang sudah dapat langsung dijalankan untuk memvisualisasikan hasil jadi websitenya:
-
-HTML
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlowGuide - Personal Skincare Assistant</title>
+    <title>GlowGuide Pro - Herbal & Dermatological Skincare Platform</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style>
-</head>
-<body class="bg-rose-50 text-gray-800">
-
-    <!-- Header / Navbar -->
-    <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-rose-500">✨ GlowGuide</h1>
-        <nav class="space-x-4 text-sm font-medium">
-            <a href="#quiz" class="hover:text-rose-500">Kuis Kulit</a>
-            <a href="#routine" class="hover:text-rose-500">Rutinitas</a>
-            <a href="#ingredients" class="hover:text-rose-500">Bahan Aktif</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="text-center py-12 px-4 bg-gradient-to-b from-rose-100 to-rose-50">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Temukan Rutinitas Skincare Terbaikmu</h2>
-        <p class="text-gray-600 max-w-lg mx-auto mb-6 text-sm">Pahami kebutuhan kulit wajahmu dan dapatkan panduan perawatan harian yang tepat secara konsisten.</p>
-        <a href="#quiz" class="bg-rose-500 text-white px-6 py-3 rounded-full font-medium hover:bg-rose-600 transition shadow-lg">Mulai Analisis Kulit</a>
-    </section>
-
-    <!-- Interactive Quiz Section -->
-    <section id="quiz" class="max-w-xl mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
-        <h3 class="text-xl font-bold text-center text-rose-600 mb-4">🔍 Analisis Singkat Tipe Kulit</h3>
-        
-        <div id="quiz-container">
-            <p class="font-medium mb-3">Bagaimana kondisi kulit wajahmu beberapa jam setelah dicuci?</p>
-            <div class="space-y-2">
-                <button onclick="setResult('Berminyak', 'Gunakan pembersih gentle, serum Niacinamide, pelembab gel ringan, dan sunscreen oil-free.')" 
-                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
-                    💦 Tampak mengkilap dan terasa berminyak di seluruh wajah
-                </button>
-                <button onclick="setResult('Kering', 'Gunakan pembersih hydrating, serum Hyaluronic Acid, pelembab krim kaya nutrisi, dan sunscreen melembabkan.')" 
-                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
-                    🌵 Terasa tertarik, kaku, atau kadang terkelupas
-                </button>
-                <button onclick="setResult('Kombinasi', 'Gunakan pembersih seimbang, pelembab berbasis air, serta atur penggunaan produk di area T-Zone.')" 
-                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
-                    ☯️ Berminyak hanya di area T-Zone (dahi, hidung, dagu), pipi normal/kering
-                </button>
-            </div>
-        </div>
-
-        <!-- Quiz Result Box -->
-        <div id="result-box" class="hidden mt-6 p-4 bg-rose-50 border border-rose-200 rounded-xl text-center">
-            <h4 class="font-bold text-lg text-rose-700 mb-1">Tipe Kulit Anda: <span id="skin-type"></span></h4>
-            <p id="skin-recommendation" class="text-sm text-gray-700 mb-4"></p>
-            <button onclick="resetQuiz()" class="text-xs text-rose-500 underline">Ulangi Kuis</button>
-        </div>
-    </section>
-
-    <!-- Interactive Routine Checklist Section -->
-    <section id="routine" class="max-w-xl mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
-        <h3 class="text-xl font-bold text-rose-600 mb-4">☀️ Checklist Rutinitas Pagi</h3>
-        <ul class="space-y-3">
-            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
-                <span class="text-sm font-medium">1. Gentle Facial Wash (Pembersih Wajah)</span>
-            </li>
-            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
-                <span class="text-sm font-medium">2. Hydrating Toner</span>
-            </li>
-            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
-                <span class="text-sm font-medium">3. Moisturizer (Pelembab Wajah)</span>
-            </li>
-            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
-                <span class="text-sm font-medium">4. Sunscreen SPF 30+ (Perlindungan UV)</span>
-            </li>
-        </ul>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center py-6 text-xs text-gray-500 border-t bg-white mt-12">
-        <p>&copy; 2026 GlowGuide — Proyek Portfolio Pelatihan TIK Kecantikan</p>
-    </footer>
-
-    <!-- JavaScript Logic -->
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
-        function setResult(type, recommendation) {
-            document.getElementById('quiz-container').classList.add('hidden');
-            document.getElementById('result-box').classList.remove('hidden');
-            document.getElementById('skin-type').innerText = type;
-            document.getElementById('skin-recommendation').innerText = recommendation;
-        }
-
-        function resetQuiz() {
-            document.getElementById('quiz-container').classList.remove('hidden');
-            document.getElementById('result-box').classList.add('hidden');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3eae3',
+                            200: '#c7d5c7',
+                            300: '#a3baa3',
+                            400: '#7b9a7c',
+                            500: '#5c7c5d',
+                            600: '#476248',
+                            700: '#394e3a',
+                            800: '#2f3f30',
+                            900: '#273428',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
         }
     </script>
-</body>
-</html>
- Nilai Tambah Proyek untuk Portofolio Anda
-Penyelesaian Masalah Nyata: Mengubah kebingungan orang memilih produk skincare menjadi langkah interaktif yang mudah dipahami.
-
-Keterampilan TIK Terbukti: Menunjukkan kemampuan Anda dalam membuat desain antarmuka (UI/UX) yang estetik, manipulasi elemen dengan JavaScript, serta struktur responsive modern.
-
-Peluang Pengembangan (Komersial): Ke depannya bisa ditambahkan fitur affiliate link ke e-commerce (Shopee/Tokopedia) jika pengguna ingin membeli produk rekomendasi tersebut.
-
-nah di dalamnya harus ada seperti konsultasi kepada semacam dokter gitu, trus bisa mendapatkan rekomendasi skincare , bisa request harga skincare nya juga, sesuai budget yang di miliki
-
-Konsep proyek GlowGuide dapat ditingkatkan dengan menambahkan modul Konsultasi & Smart Budgeting.
-
-Fitur tambahan ini tidak hanya menguji kemampuan logika pemrograman (JavaScript/Backend), tetapi juga memberikan nilai jual yang tinggi karena menyelesaikan masalah nyata: mencari skincare yang tepat, sesuai rekomendasi ahli, dan ramah di kantong.
-
-🚀 Pembaruan Konsep Proyek: GlowGuide Pro (Consultation & Budgeting)
-💡 Rincian Fitur Baru yang Ditambahkan:
-Modul Konsultasi Virtual (Dokter / Beauty Expert):
-
-Formulir Konsultasi Interaktif: Pengguna mengisi data keluhan, mengunggah foto kondisi kulit, dan memilih jadwal konsultasi.
-
-Sistem Chat Simulasi / Reservasi: Antarmuka chatting tempat pengguna berdiskusi langsung dengan pakar/dokter estetika atau memesan sesi konsultasi via WhatsApp/Video Call.
-
-Smart Budget Filter (Rekomendasi Sesuai Anggaran):
-
-Pengguna memasukkan rentang anggaran (budget) yang dimiliki (misal: Rp 50.000 – Rp 150.000 atau Rp 200.000 – Rp 500.000).
-
-Sistem secara otomatis memfilter paket skincare (Pembersih + Pelembab + Sunscreen) yang jumlah total harganya tidak melebihi budget tersebut.
-
-E-Prescription / Rekomendasi Dokter:
-
-Hasil akhir konsultasi berupa lembar resep/rekomendasi digital berisi daftar produk lengkap beserta total harganya.
-
-🌐 Contoh Hasil Jadi Website (Kode & Tampilan Interaktif)
-Berikut adalah contoh kode HTML, CSS (Tailwind CSS), dan JavaScript lengkap yang memperagakan fitur konsultasi dan rekomendasi berdasarkan budget:
-
-HTML
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlowGuide Pro - Konsultasi & Rekomendasi Skincare</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #86efac;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body class="bg-rose-50 text-gray-800">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900">
 
-    <!-- Header / Navbar -->
-    <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-50">
-        <h1 class="text-2xl font-bold text-rose-500">✨ GlowGuide Pro</h1>
-        <nav class="space-x-4 text-sm font-medium">
-            <a href="#consultation" class="hover:text-rose-500">Konsultasi Dokter</a>
-            <a href="#budget-finder" class="hover:text-rose-500">Cari Sesuai Budget</a>
-        </nav>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <span id="toast-msg" class="text-sm font-medium">Notifikasi</span>
+    </div>
+
+    <!-- 1. NAVBAR / HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-emerald-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-sparkles text-lg"></i>
+                </div>
+                <span class="text-xl font-bold bg-gradient-to-r from-emerald-800 to-teal-600 bg-clip-text text-transparent">GlowGuide<span class="text-emerald-500 font-extrabold">Pro</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#hero" class="hover:text-emerald-600 transition-colors">Beranda</a>
+                <a href="#konsultasi" class="hover:text-emerald-600 transition-colors">Konsultasi</a>
+                <a href="#smart-budget" class="hover:text-emerald-600 transition-colors">Smart Budget</a>
+                <a href="#quiz" class="hover:text-emerald-600 transition-colors">Skin Quiz</a>
+                <a href="#katalog" class="hover:text-emerald-600 transition-colors">Katalog & Bahan</a>
+                <a href="#pao-tracker" class="hover:text-emerald-600 transition-colors">Tracker PAO</a>
+                <a href="#review" class="hover:text-emerald-600 transition-colors">Komunitas</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartModal()" class="relative p-2.5 text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-emerald-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+                <a href="#quiz" class="hidden sm:inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-md shadow-emerald-200 hover:shadow-lg transition-all">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Analisis Kulit
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="text-center py-10 px-4 bg-gradient-to-b from-rose-100 to-rose-50">
-        <h2 class="text-3xl font-bold text-gray-900 mb-2">Konsultasi Skincare & Rekomendasi Pas Budget</h2>
-        <p class="text-gray-600 max-w-md mx-auto text-sm">Dapatkan rekomendasi rutinitas wajah langsung dari ahli dengan harga yang disesuaikan dengan dompetmu.</p>
-    </section>
-
-    <div class="max-w-4xl mx-auto p-4 grid md:grid-cols-2 gap-6">
-
-        <!-- FITUR 1: Formulir Konsultasi Dokter -->
-        <section id="consultation" class="bg-white p-6 rounded-2xl shadow-md border border-rose-100">
-            <h3 class="text-lg font-bold text-rose-600 mb-1 flex items-center gap-2">
-                🩺 Konsultasi Virtual Dokter
-            </h3>
-            <p class="text-xs text-gray-500 mb-4">Isi keluhan kulitmu untuk dijadwalkan dengan Dokter Estetika.</p>
-
-            <form id="consultForm" onsubmit="handleConsultation(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-semibold mb-1">Nama Lengkap</label>
-                    <input type="text" id="patientName" required placeholder="Contoh: Anisa" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-b from-emerald-50/60 via-slate-50 to-slate-50 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+                        <i class="fa-solid fa-leaf text-emerald-600"></i> Platform Dermatologi & Botanical Skincare #1
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                        Kulit Sehat & Impian Tanpa Over-budget dengan <span class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">GlowGuide Pro</span>
+                    </h1>
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+                        Solusi terpadu analisis tipe kulit, konsultasi dokter spesialis terpercaya, edukasi bahan aktif herbal & klinis, serta rekomendasi produk pas di kantong.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#smart-budget" class="inline-flex justify-center items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 rounded-2xl font-bold text-base shadow-xl shadow-emerald-200 hover:shadow-2xl transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-calculator"></i> Fitur Smart Budget
+                        </a>
+                        <a href="#konsultasi" class="inline-flex justify-center items-center gap-2 bg-white border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-7 py-3.5 rounded-2xl font-bold text-base transition-all">
+                            <i class="fa-solid fa-user-doctor"></i> Tanya Dokter
+                        </a>
+                    </div>
+                    <!-- Badges Stats -->
+                    <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-800">12K+</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Pengguna Aktif</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-800">98%</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Tingkat Kepuasan</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-800">50+</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Dokter Estetika</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold mb-1">Keluhan Utama Kulit</label>
-                    <select id="skinIssue" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
-                        <option value="Jerawat & Blemish">Jerawat & Bruntusan</option>
-                        <option value="Kusam & Bekas Jerawat">Kusam & Bekas Jerawat</option>
-                        <option value="Kulit Kering & Kaku">Kulit Kering & Sensitif</option>
-                        <option value="Penuaan Dini">Garis Halus / Penuaan Dini</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold mb-1">Pesan / Catatan Tambahan</label>
-                    <textarea id="patientNotes" rows="2" placeholder="Sebutkan produk yang sedang dipakai saat ini..." class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-rose-500 text-white py-2.5 rounded-xl font-medium text-sm hover:bg-rose-600 transition">
-                    Kirim & Hubungi Dokter (WhatsApp)
-                </button>
-            </form>
-        </section>
-
-        <!-- FITUR 2: Smart Budget Skincare Recommendation -->
-        <section id="budget-finder" class="bg-white p-6 rounded-2xl shadow-md border border-rose-100">
-            <h3 class="text-lg font-bold text-rose-600 mb-1 flex items-center gap-2">
-                💰 Rekomendasi Sesuai Budget
-            </h3>
-            <p class="text-xs text-gray-500 mb-4">Tentukan batas maksimal anggaran belanja skincare harianmu.</p>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold mb-1">Pilih Tipe Kulit</label>
-                    <select id="budgetSkinType" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
-                        <option value="berminyak">Berminyak / Berjerawat</option>
-                        <option value="kering">Kering / Dehidrasi</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1">Batas Maksimal Budget (Rp)</label>
-                    <input type="number" id="maxBudget" placeholder="Contoh: 150000" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
-                </div>
-
-                <button onclick="findSkincareByBudget()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl font-medium text-sm hover:bg-emerald-700 transition">
-                    Cari Paket Skincare
-                </button>
-
-                <!-- Result Area -->
-                <div id="budgetResult" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-                    <h4 class="font-bold text-emerald-800 text-sm mb-2">Rekomendasi Paket Produk:</h4>
-                    <ul id="productList" class="text-xs text-gray-700 space-y-1 divide-y divide-emerald-100"></ul>
-                    <div class="mt-3 pt-2 border-t border-emerald-200 flex justify-between font-bold text-xs text-emerald-900">
-                        <span>Total Est. Harga:</span>
-                        <span id="totalPrice">Rp 0</span>
+                
+                <!-- Hero Visual Graphic -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-emerald-300/30 rounded-full blur-3xl -z-10"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-teal-300/30 rounded-full blur-3xl -z-10"></div>
+                        
+                        <div class="bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 space-y-4">
+                            <div class="relative rounded-2xl overflow-hidden h-64 bg-emerald-900 flex items-center justify-center group">
+                                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" alt="Herbal Skincare" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-5">
+                                    <div class="text-white">
+                                        <span class="bg-emerald-500/80 backdrop-blur-md text-xs font-bold px-2.5 py-1 rounded-md mb-2 inline-block">Rekomendasi Hari Ini</span>
+                                        <h3 class="text-lg font-bold">Organics Botanical Serum</h3>
+                                        <p class="text-xs text-slate-200">Ekstrak Centella Asiatica & Organic Tea Tree</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mini Card Feature Floating -->
+                            <div class="flex items-center gap-4 bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Dermatology Verified</h4>
+                                    <p class="text-xs text-slate-500">Semua rekomendasi terverifikasi aman & BPOM.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
+    <!-- 3. MODUL KONSULTASI DOKTER VIRTUAL -->
+    <section id="konsultasi" class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Layanan Klinis</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">Konsultasi Dokter Virtual</h2>
+                <p class="text-slate-500 text-sm mt-1">Dapatkan saran medis pribadi langsung dari Dermatolog berpengalaman.</p>
+            </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-6 text-xs text-gray-500 border-t bg-white mt-8">
-        <p>&copy; 2026 GlowGuide Pro — Project Web TIK Kecantikan & Kesehatan</p>
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Daftar Dokter -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-user-doctor text-emerald-600"></i> Pilih Dokter Spesialis
+                    </h3>
+                    <div id="doctor-list" class="space-y-3">
+                        <!-- Iterasi Dokter via JS -->
+                    </div>
+                </div>
+
+                <!-- Form Janji Temu / Konsultasi -->
+                <div class="lg:col-span-5 bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check text-emerald-600"></i> Form Konsultasi
+                    </h3>
+                    <form id="consultation-form" onsubmit="handleConsultationSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap</label>
+                            <input type="text" required placeholder="Contoh: Amanda Putri" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Dokter Tujuan</label>
+                            <input type="text" id="selected-doctor-input" readonly value="dr. Sarah Amalia, Sp.DVE" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-600 text-sm font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Keluhan Kulit Utama</label>
+                            <textarea rows="3" required placeholder="Jelaskan kondisi kulit, gatal, kemerahan, atau bruntusan..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm bg-white"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Foto Kondisi Kulit (Opsional)</label>
+                            <input type="file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-100 file:text-emerald-800 hover:file:bg-emerald-200">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Pilih Jadwal Konsultasi</label>
+                            <input type="datetime-local" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm bg-white">
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-200 transition-all text-sm flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Dokter via Chat Simulator
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MODUL SMART BUDGET & CUSTOM RECOMMENDATIONS -->
+    <section id="smart-budget" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Fitur Pintar</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">Smart Budget Skincare Calculator</h2>
+                <p class="text-slate-500 text-sm mt-1">Atur budgetmu dan dapatkan paket rangkaian produk efektif secara instan.</p>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 mb-8 space-y-6">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Slider Budget -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="text-xs font-bold text-slate-700">Maksimal Budget:</label>
+                            <span id="budget-value" class="text-base font-extrabold text-emerald-700">Rp 250.000</span>
+                        </div>
+                        <input type="range" id="budget-range" min="50000" max="1000000" step="25000" value="250000" oninput="updateBudgetFilter()" class="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg">
+                        <div class="flex justify-between text-[10px] text-slate-400">
+                            <span>Rp 50rb</span>
+                            <span>Rp 500rb</span>
+                            <span>Rp 1 Juta+</span>
+                        </div>
+                    </div>
+
+                    <!-- Filter Skin Type -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-700">Tipe Kulit:</label>
+                        <select id="budget-skin-type" onchange="updateBudgetFilter()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-sm bg-white font-medium">
+                            <option value="all">Semua Tipe Kulit</option>
+                            <option value="berminyak">Berminyak (Oily)</option>
+                            <option value="kering">Kering (Dry)</option>
+                            <option value="kombinasi">Kombinasi</option>
+                            <option value="sensitif">Sensitif</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter Goal -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-700">Fokus Perawatan (Goal):</label>
+                        <select id="budget-skin-goal" onchange="updateBudgetFilter()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-sm bg-white font-medium">
+                            <option value="all">Semua Focus</option>
+                            <option value="jerawat">Jerawat / Acne Care</option>
+                            <option value="mencerahkan">Mencerahkan / Brightening</option>
+                            <option value="anti-aging">Anti-Aging & Firming</option>
+                            <option value="barrier">Barrier Repair</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation Results Grid -->
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-slate-800 text-lg">Paket & Produk Rekomendasi</h3>
+                    <span id="results-count" class="text-xs text-slate-500 font-semibold">Menampilkan 0 produk</span>
+                </div>
+                <div id="budget-products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Dynamic Items via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. KUIS INTERAKTIF TIPE KULIT (SKIN ANALYZER) -->
+    <section id="quiz" class="py-16 bg-gradient-to-b from-slate-50 to-emerald-50/40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-3xl shadow-xl border border-emerald-100 overflow-hidden">
+                <!-- Quiz Header -->
+                <div class="bg-emerald-800 p-6 sm:p-8 text-white text-center relative">
+                    <span class="bg-emerald-700 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Interactive Diagnostic</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Skin Analyzer Quiz</h2>
+                    <p class="text-emerald-100 text-xs sm:text-sm mt-1">Jawab 3 pertanyaan singkat untuk mengetahui diagnosis dasar kulitmu.</p>
+                </div>
+
+                <!-- Quiz Progress Bar -->
+                <div class="w-full bg-slate-100 h-2">
+                    <div id="quiz-progress" class="bg-emerald-500 h-2 w-1/3 transition-all duration-300"></div>
+                </div>
+
+                <!-- Quiz Container -->
+                <div class="p-6 sm:p-10">
+                    <div id="quiz-step-container">
+                        <!-- Dynamic Steps via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. KATALOG PRODUK & ENSIKLOPEDIA BAHAN AKTIF -->
+    <section id="katalog" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
+            <!-- ENSIKLOPEDIA BAHAN AKTIF (INGREDIENTS) -->
+            <div>
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Ensiklopedia Skincare</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2">Edukasi Bahan Aktif & Botanical</h2>
+                    <p class="text-slate-500 text-sm mt-1">Pahami manfaat setiap kandungan sebelum menerapkannya pada kulitmu.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="ingredients-grid">
+                    <!-- Dynamic Ingredient Cards -->
+                </div>
+            </div>
+
+            <!-- KATALOG PRODUK UTAMA -->
+            <div class="pt-10 border-t border-slate-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Katalog Skincare Terpilih</h2>
+                        <p class="text-slate-500 text-xs sm:text-sm">Produk herbal dan dermacosmetics terbaik.</p>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-2" id="catalog-category-filters">
+                        <button onclick="filterCatalog('all')" class="cat-btn active text-xs font-semibold px-4 py-2 rounded-xl border border-emerald-600 bg-emerald-600 text-white transition-all">Semua</button>
+                        <button onclick="filterCatalog('Cleanser')" class="cat-btn text-xs font-semibold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 transition-all">Cleanser</button>
+                        <button onclick="filterCatalog('Serum')" class="cat-btn text-xs font-semibold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 transition-all">Serum</button>
+                        <button onclick="filterCatalog('Moisturizer')" class="cat-btn text-xs font-semibold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 transition-all">Moisturizer</button>
+                        <button onclick="filterCatalog('Sunscreen')" class="cat-btn text-xs font-semibold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 transition-all">Sunscreen</button>
+                    </div>
+                </div>
+
+                <div id="catalog-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Dynamic Catalog Items -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. FITUR PENGINGAT MASA KEDALUWARSA (PAO - PERIOD AFTER OPENING TRACKER) -->
+    <section id="pao-tracker" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-xs font-bold text-emerald-400 tracking-wider uppercase bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800">Safety & Expiry</span>
+                    <h2 class="text-3xl font-extrabold text-white">PAO Tracker (Period After Opening)</h2>
+                    <p class="text-slate-400 text-sm">
+                        Produk skincare yang sudah dibuka memiliki masa pakai terbatas (misal: 6 bulan atau 12 bulan). Catat produkmu di sini untuk memantau sisa hari keamanannya!
+                    </p>
+
+                    <!-- Add PAO Form -->
+                    <form id="pao-form" onsubmit="addPAOItem(event)" class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3 mt-4">
+                        <h4 class="text-sm font-bold text-emerald-300">Tambah Produk Baru</h4>
+                        <div>
+                            <input type="text" id="pao-name" required placeholder="Nama Produk (mis: Vitamin C Serum)" class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:ring-1 focus:ring-emerald-400 focus:outline-none">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">Tgl Dibuka</label>
+                                <input type="date" id="pao-date" required class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:ring-1 focus:ring-emerald-400 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">Masa PAO (Bulan)</label>
+                                <select id="pao-months" class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:ring-1 focus:ring-emerald-400 focus:outline-none">
+                                    <option value="3">3 Bulan</option>
+                                    <option value="6" selected>6 Bulan</option>
+                                    <option value="12">12 Bulan</option>
+                                    <option value="24">24 Bulan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Simpan ke Tracker
+                        </button>
+                    </form>
+                </div>
+
+                <!-- PAO Saved List -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 space-y-4">
+                        <div class="flex justify-between items-center pb-3 border-b border-slate-700">
+                            <h3 class="font-bold text-slate-200 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-clock-rotate-left text-emerald-400"></i> Daftar Skincare Terbuka
+                            </h3>
+                            <span id="pao-count-badge" class="text-xs bg-emerald-900/80 text-emerald-300 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-700">0 Produk</span>
+                        </div>
+
+                        <div id="pao-list" class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1">
+                            <!-- Items via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. TESTIMONI & KOMUNITAS BEAUTY REVIEW -->
+    <section id="review" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Komunitas</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">Ulasan Real Pengguna</h2>
+                <p class="text-slate-500 text-sm mt-1">Pengalaman nyata pengguna GlowGuide Pro dalam perjalanan merawat kulit.</p>
+            </div>
+
+            <!-- Review Form Toggle -->
+            <div class="text-center mb-8">
+                <button onclick="toggleReviewForm()" class="bg-white border border-emerald-300 text-emerald-700 hover:bg-emerald-50 px-5 py-2.5 rounded-2xl text-xs font-bold shadow-sm transition-all inline-flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i> Tulis Ulasan Anda
+                </button>
+            </div>
+
+            <!-- Modal / Form Tulis Ulasan -->
+            <div id="review-form-container" class="hidden max-w-xl mx-auto mb-10 bg-white p-6 rounded-3xl border border-emerald-200 shadow-lg">
+                <h4 class="text-base font-bold text-slate-800 mb-4">Bagikan Pengalaman Kulitmu</h4>
+                <form onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Anda</label>
+                        <input type="text" id="rev-name" required placeholder="Siti Rahma" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Rating</label>
+                        <select id="rev-rating" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs">
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="3">⭐⭐⭐ (3/5)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Ulasan Ulasan & Hasil</label>
+                        <textarea id="rev-comment" rows="3" required placeholder="Ceritakan perubahan kondisi kulitmu..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs"></textarea>
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button type="button" onclick="toggleReviewForm()" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 text-xs font-semibold">Batal</button>
+                        <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold">Kirim Review</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div id="reviews-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Items via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-emerald-200/80 py-12 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3 md:col-span-1">
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-sparkles text-sm"></i>
+                    </div>
+                    <span class="text-lg font-bold text-white">GlowGuide Pro</span>
+                </a>
+                <p class="text-xs text-emerald-300/70 leading-relaxed">
+                    Panduan perawatan kulit holistik yang memadukan dermatologi modern dan kebaikan bahan herbal pilihan.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Fitur Utama</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#konsultasi" class="hover:text-white transition-colors">Konsultasi Dokter Virtual</a></li>
+                    <li><a href="#smart-budget" class="hover:text-white transition-colors">Smart Budget Calculator</a></li>
+                    <li><a href="#quiz" class="hover:text-white transition-colors">Skin Analyzer Quiz</a></li>
+                    <li><a href="#pao-tracker" class="hover:text-white transition-colors">Expiry PAO Tracker</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Edukasi</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#katalog" class="hover:text-white transition-colors">Ensiklopedia Ingredients</a></li>
+                    <li><a href="#katalog" class="hover:text-white transition-colors">Katalog Herbal Skincare</a></li>
+                    <li><a href="#review" class="hover:text-white transition-colors">Komunitas Review</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Keamanan & Garansi</h4>
+                <div class="flex items-center gap-2 text-xs text-emerald-300">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i> Terverifikasi BPOM
+                </div>
+                <div class="flex items-center gap-2 text-xs text-emerald-300 mt-2">
+                    <i class="fa-solid fa-shield-halved text-emerald-400"></i> Dermatologically Tested
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-emerald-900 text-center text-[11px] text-emerald-400/60">
+            &copy; 2026 GlowGuide Pro. All rights reserved. Natural & Dermatological Beauty Assistant.
+        </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- CART SIMULATION MODAL -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+            <div class="p-5 bg-emerald-800 text-white flex justify-between items-center">
+                <h3 class="font-bold text-base flex items-center gap-2"><i class="fa-solid fa-bag-shopping"></i> Keranjang Simulasi</h3>
+                <button onclick="toggleCartModal()" class="text-emerald-200 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="cart-items-container" class="p-5 space-y-3 max-h-72 overflow-y-auto custom-scrollbar">
+                <!-- Cart items dynamically inserted -->
+            </div>
+            <div class="p-5 bg-slate-50 border-t border-slate-200 space-y-3">
+                <div class="flex justify-between items-center text-sm font-bold text-slate-800">
+                    <span>Total Estimasi:</span>
+                    <span id="cart-total-price" class="text-emerald-700 font-extrabold">Rp 0</span>
+                </div>
+                <button onclick="checkoutSimulation()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl font-bold text-xs shadow-md transition-all">
+                    Selesaikan Pembelian
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Database Produk Simulasi
-        const productsDB = {
-            berminyak: [
-                { name: "Facial Wash Anti-Acne 100ml", price: 35000 },
-                { name: "Niacinamide 5% Serum 20ml", price: 55000 },
-                { name: "Lightweight Gel Moisturizer 30g", price: 45000 },
-                { name: "Sunscreen Matte Finish SPF 30", price: 40000 }
-            ],
-            kering: [
-                { name: "Gentle Hydrating Cleanser 100ml", price: 40000 },
-                { name: "Hyaluronic Acid Serum 20ml", price: 60000 },
-                { name: "Rich Moisture Cream 30g", price: 50000 },
-                { name: "Hydrating Sunscreen SPF 50", price: 45000 }
-            ]
-        };
+        // --- DATA STORE ---
+        const doctorsData = [
+            {
+                id: 1,
+                name: "dr. Sarah Amalia, Sp.DVE",
+                specialty: "Spesialis Skin Barrier & Acne Herbal",
+                rating: 4.9,
+                status: "Online",
+                avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80"
+            },
+            {
+                id: 2,
+                name: "dr. Budi Santoso, Sp.KK",
+                specialty: "Dermatologi Anti-Aging & Botanical Formula",
+                rating: 4.8,
+                status: "Online",
+                avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80"
+            },
+            {
+                id: 3,
+                name: "dr. Nadia Putri, M.Biomed",
+                specialty: "Estetika Medis & Kulit Sensitif",
+                rating: 4.9,
+                status: "Offline",
+                avatar: "https://images.unsplash.com/photo-1594824813566-78a933f22380?auto=format&fit=crop&w=200&q=80"
+            }
+        ];
 
-        // Handle Form Konsultasi
-        function handleConsultation(e) {
-            e.preventDefault();
-            const name = document.getElementById('patientName').value;
-            const issue = document.getElementById('skinIssue').value;
-            const notes = document.getElementById('patientNotes').value;
+        const productsData = [
+            {
+                id: 101,
+                name: "Cica Barrier Soothing Cleanser",
+                category: "Cleanser",
+                price: 65000,
+                skinType: "sensitif",
+                goal: "barrier",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+                desc: "Pembersih wajah lembut dengan Centella Asiatica alami."
+            },
+            {
+                id: 102,
+                name: "Tea Tree Clarity Acne Serum",
+                category: "Serum",
+                price: 89000,
+                skinType: "berminyak",
+                goal: "jerawat",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80",
+                desc: "Meredakan jerawat aktif & mengontrol minyak berlebih."
+            },
+            {
+                id: 103,
+                name: "Hyaluronic Herb Water Cream",
+                category: "Moisturizer",
+                price: 115000,
+                skinType: "kering",
+                goal: "barrier",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1608248597261-83325b6ba584?auto=format&fit=crop&w=400&q=80",
+                desc: "Kelembapan ekstra hidrasi 24 jam dengan Aloe & HA."
+            },
+            {
+                id: 104,
+                name: "Niacinamide Glowing Sunscreen SPF 50",
+                category: "Sunscreen",
+                price: 95000,
+                skinType: "kombinasi",
+                goal: "mencerahkan",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80",
+                desc: "Proteksi UV maksimal sekaligus mencerahkan flek."
+            },
+            {
+                id: 105,
+                name: "Bakuchiol Bio-Retinol Youth Night Cream",
+                category: "Moisturizer",
+                price: 145000,
+                skinType: "berminyak",
+                goal: "anti-aging",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80",
+                desc: "Alternatif retinol alami herbal untuk cegah garis halus."
+            },
+            {
+                id: 106,
+                name: "Salicylic Acid Gentle Exfoliating Pad",
+                category: "Cleanser",
+                price: 78000,
+                skinType: "berminyak",
+                goal: "jerawat",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1556228722-d1193828ca8f?auto=format&fit=crop&w=400&q=80",
+                desc: "Eksfoliasi lembut komedo dan pori tersumbat."
+            }
+        ];
 
-            // Format Pesan WhatsApp
-            const message = `Halo Dokter GlowGuide,%0ANama: ${name}%0AKeluhan: ${issue}%0ANote: ${notes}%0A%0AMohon bantuan konsul rekomendasi skincare.`;
-            
-            // Redirect ke WhatsApp (Nomor Contoh)
-            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+        const ingredientsData = [
+            {
+                name: "Centella Asiatica (Cica)",
+                type: "Herbal Extract",
+                benefit: "Menenangkan peradangan, meredakan kemerahan, dan memperkuat skin barrier yang rusak.",
+                suitable: "Sangat cocok untuk kulit sensitif & berjerawat."
+            },
+            {
+                name: "Tea Tree Oil",
+                type: "Botanical Essential Oil",
+                benefit: "Anti-bakteri alami penumpas bakteri jerawat (P. acnes) dan pengontrol produksi sebum.",
+                suitable: "Cocok untuk kulit berminyak & acne-prone."
+            },
+            {
+                name: "Niacinamide (Vitamin B3)",
+                type: "Active Clinical Ingredient",
+                benefit: "Mencerahkan noda hitam bekas jerawat, meratakan warna kulit, dan memperkecil tampilan pori.",
+                suitable: "Semua tipe kulit."
+            },
+            {
+                name: "Hyaluronic Acid",
+                type: "Hydrating Agent",
+                benefit: "Menarik dan mengunci kelembapan hingga ke lapisan dalam kulit secara instan.",
+                suitable: "Sangat baik untuk kulit kering & dehidrasi."
+            },
+            {
+                name: "Bakuchiol",
+                type: "Natural Retinol Alternative",
+                benefit: "Merangsang kolagen, mengencangkan kulit tanpa efek iritasi seperti retinol biasa.",
+                suitable: "Aman untuk kulit sensitif & pemula anti-aging."
+            },
+            {
+                name: "Salicylic Acid (BHA)",
+                type: "Exfoliating Acid",
+                benefit: "Penetrasi ke dalam pori-pori untuk membersihkan sumbatan minyak dan sel kulit mati.",
+                suitable: "Kulit berminyak & komedo."
+            }
+        ];
+
+        let reviewsData = [
+            {
+                id: 1,
+                name: "Clarissa Dewi",
+                rating: 5,
+                comment: "Rekomendasi dari Smart Budget-nya pas banget sama kantong mahasiswa! Cica Cleanser-nya bikin bruntusan berkurang dalam 1 minggu.",
+                time: "2 hari lalu"
+            },
+            {
+                id: 2,
+                name: "Bima Arya",
+                rating: 5,
+                comment: "Fitur PAO Tracker sangat berguna, saya sering lupa kapan membuka sunscreen. Konsultasi dokternya juga responsif!",
+                time: "5 hari lalu"
+            }
+        ];
+
+        let cart = [];
+        let paoItems = JSON.parse(localStorage.getItem('glow_pao_items')) || [
+            { id: 1, name: "Tea Tree Serum", dateOpened: "2026-08-10", months: 6 }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+
+        // Render Dokter
+        function renderDoctors() {
+            const container = document.getElementById('doctor-list');
+            container.innerHTML = doctorsData.map(doc => `
+                <div onclick="selectDoctor('${doc.name}')" class="p-4 bg-white border border-slate-200 rounded-2xl hover:border-emerald-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="${doc.avatar}" class="w-12 h-12 rounded-xl object-cover" alt="${doc.name}">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">${doc.name}</h4>
+                            <p class="text-xs text-slate-500">${doc.specialty}</p>
+                            <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500 font-bold">
+                                <i class="fa-solid fa-star"></i> <span>${doc.rating}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${doc.status === 'Online' ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-500'}">
+                        ● ${doc.status}
+                    </span>
+                </div>
+            `).join('');
         }
 
-        // Logic Filter Berdasarkan Budget
-        function findSkincareByBudget() {
-            const skinType = document.getElementById('budgetSkinType').value;
-            const userBudget = parseInt(document.getElementById('maxBudget').value);
-            const resultBox = document.getElementById('budgetResult');
-            const productList = document.getElementById('productList');
-            const totalPriceEl = document.getElementById('totalPrice');
+        function selectDoctor(docName) {
+            document.getElementById('selected-doctor-input').value = docName;
+            showToast(`Dokter ${docName} dipilih.`);
+        }
 
-            if (isNaN(userBudget) || userBudget <= 0) {
-                alert("Masukkan nominal budget yang valid!");
+        // Render Smart Budget Products
+        function updateBudgetFilter() {
+            const budget = parseInt(document.getElementById('budget-range').value);
+            const skinType = document.getElementById('budget-skin-type').value;
+            const goal = document.getElementById('budget-skin-goal').value;
+
+            document.getElementById('budget-value').innerText = `Rp ${budget.toLocaleString('id-ID')}`;
+
+            const filtered = productsData.filter(p => {
+                const matchBudget = p.price <= budget;
+                const matchSkin = skinType === 'all' || p.skinType === skinType;
+                const matchGoal = goal === 'all' || p.goal === goal;
+                return matchBudget && matchSkin && matchGoal;
+            });
+
+            document.getElementById('results-count').innerText = `Menampilkan ${filtered.length} produk`;
+
+            const grid = document.getElementById('budget-products-grid');
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-8 text-slate-400 text-sm">Tidak ada produk dalam jangkauan budget & kriteria ini. Coba naikkan budget slider!</div>`;
                 return;
             }
 
-            const availableProducts = productsDB[skinType];
-            let selectedProducts = [];
-            let currentTotal = 0;
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between p-4">
+                    <div>
+                        <img src="${p.image}" class="w-full h-36 object-cover rounded-xl mb-3" alt="${p.name}">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">${p.category}</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">${p.name}</h4>
+                        <p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <span class="font-extrabold text-emerald-800 text-sm">Rp ${p.price.toLocaleString('id-ID')}</span>
+                        <button onclick="addToCart(${p.id})" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs px-3 py-1.5 rounded-lg font-semibold transition-all flex items-center gap-1">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Beli
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-            // Memilih produk yang muat dalam budget
-            for (let item of availableProducts) {
-                if (currentTotal + item.price <= userBudget) {
-                    selectedProducts.push(item);
-                    currentTotal += item.price;
+        // Render Ingredients
+        function renderIngredients() {
+            const grid = document.getElementById('ingredients-grid');
+            grid.innerHTML = ingredientsData.map(item => `
+                <div class="p-5 bg-emerald-50/50 rounded-2xl border border-emerald-100/80 hover:bg-white hover:shadow-md transition-all">
+                    <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">${item.type}</span>
+                    <h4 class="text-base font-bold text-slate-800 mt-0.5">${item.name}</h4>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">${item.benefit}</p>
+                    <div class="mt-3 text-[11px] font-semibold text-emerald-800 bg-emerald-100/60 px-2.5 py-1 rounded-md inline-block">
+                        💡 ${item.suitable}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Catalog Filter
+        function filterCatalog(category) {
+            // Update Active Buttons UI
+            const buttons = document.querySelectorAll('#catalog-category-filters .cat-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(category) || (category === 'all' && btn.innerText === 'Semua')) {
+                    btn.className = "cat-btn active text-xs font-semibold px-4 py-2 rounded-xl border border-emerald-600 bg-emerald-600 text-white transition-all";
+                } else {
+                    btn.className = "cat-btn text-xs font-semibold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 transition-all";
                 }
+            });
+
+            const filtered = category === 'all' ? productsData : productsData.filter(p => p.category === category);
+            const grid = document.getElementById('catalog-grid');
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 hover:border-emerald-400 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-3">
+                            <img src="${p.image}" class="w-full h-40 object-cover" alt="${p.name}">
+                            <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-bold text-amber-500">
+                                ★ ${p.rating}
+                            </span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">${p.category}</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-0.5">${p.name}</h4>
+                        <p class="text-xs text-slate-500 mt-1">${p.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <span class="font-extrabold text-slate-900 text-sm">Rp ${p.price.toLocaleString('id-ID')}</span>
+                        <button onclick="addToCart(${p.id})" class="bg-emerald-100 text-emerald-800 hover:bg-emerald-600 hover:text-white text-xs px-3 py-1.5 rounded-lg font-semibold transition-all">
+                            + Keranjang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- SKIN QUIZ SYSTEM ---
+        const quizQuestions = [
+            {
+                title: "Bagaimana kondisi wajahmu saat bangun pagi?",
+                options: [
+                    { text: "Berminyak di seluruh area wajah", type: "berminyak" },
+                    { text: "Terasa tertarik, kering, atau bersisik", type: "kering" },
+                    { text: "Berminyak hanya di T-Zone (Dahi & Hidung)", type: "kombinasi" },
+                    { text: "Kemerahan, perih, atau mudah gatal", type: "sensitif" }
+                ]
+            },
+            {
+                title: "Apa masalah utama yang paling ingin kamu perbaiki?",
+                options: [
+                    { text: "Jerawat aktif & bruntusan", type: "jerawat" },
+                    { text: "Kusam & noda hitam bekas jerawat", type: "mencerahkan" },
+                    { text: "Garis halus & kerutan dini", type: "anti-aging" },
+                    { text: "Kemerahan & kemerahan kulit perih", type: "barrier" }
+                ]
+            },
+            {
+                title: "Bagaimana reaksi kulitmu terhadap produk skincare baru?",
+                options: [
+                    { text: "Biasa saja, jarang breakout", type: "normal" },
+                    { text: "Sering muncul rasa perih atau panas", type: "sensitif" },
+                    { text: "Cepat berminyak jika tidak cocok", type: "berminyak" }
+                ]
+            }
+        ];
+
+        let currentQuizStep = 0;
+        let quizAnswers = [];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-step-container');
+            const progress = document.getElementById('quiz-progress');
+
+            if (currentQuizStep >= quizQuestions.length) {
+                // Show Result
+                progress.style.width = '100%';
+                const detectedType = quizAnswers[0] || 'kombinasi';
+                container.innerHTML = `
+                    <div class="text-center py-6 space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Analisis Kulit Selesai!</h3>
+                        <p class="text-sm text-slate-600">Berdasarkan jawabanmu, jenis kulit utamamu cenderung: <br><strong class="text-emerald-700 uppercase tracking-wider text-base">${detectedType}</strong></p>
+                        <div class="pt-4 flex justify-center gap-3">
+                            <button onclick="resetQuiz()" class="px-4 py-2 border border-slate-300 rounded-xl text-xs font-semibold text-slate-600">Ulangi Kuis</button>
+                            <a href="#smart-budget" onclick="applyQuizToBudget('${detectedType}')" class="px-5 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md">Lihat Rekomendasi Skincare</a>
+                        </div>
+                    </div>
+                `;
+                return;
             }
 
-            // Render Hasil
-            productList.innerHTML = "";
-            if (selectedProducts.length === 0) {
-                productList.innerHTML = `<li class="text-rose-600 font-semibold py-1">Budget belum mencukupi untuk paket dasar. Coba naikkan nominal budget.</li>`;
-            } else {
-                selectedProducts.forEach(item => {
-                    productList.innerHTML += `
-                        <li class="py-1 flex justify-between">
-                            <span>• ${item.name}</span>
-                            <span class="font-medium">Rp ${item.price.toLocaleString('id-ID')}</span>
-                        </li>`;
-                });
+            // Update Progress
+            progress.style.width = `${((currentQuizStep + 1) / quizQuestions.length) * 100}%`;
+
+            const q = quizQuestions[currentQuizStep];
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <span class="text-xs font-bold text-emerald-600 uppercase">Pertanyaan ${currentQuizStep + 1} dari ${quizQuestions.length}</span>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-800">${q.title}</h3>
+                    <div class="grid gap-3">
+                        ${q.options.map((opt, idx) => `
+                            <button onclick="answerQuiz('${opt.type}')" class="p-4 text-left border border-slate-200 rounded-2xl hover:border-emerald-500 hover:bg-emerald-50/50 transition-all text-sm font-medium text-slate-700 flex justify-between items-center group">
+                                <span>${opt.text}</span>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-emerald-600"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function answerQuiz(type) {
+            quizAnswers.push(type);
+            currentQuizStep++;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            currentQuizStep = 0;
+            quizAnswers = [];
+            renderQuiz();
+        }
+
+        function applyQuizToBudget(type) {
+            document.getElementById('budget-skin-type').value = type;
+            updateBudgetFilter();
+        }
+
+        // --- PAO TRACKER SYSTEM ---
+        function renderPAOList() {
+            const list = document.getElementById('pao-list');
+            document.getElementById('pao-count-badge').innerText = `${paoItems.length} Produk`;
+
+            if (paoItems.length === 0) {
+                list.innerHTML = `<p class="text-xs text-slate-500 py-4 text-center">Belum ada produk yang dicatat.</p>`;
+                return;
             }
 
-            totalPriceEl.innerText = `Rp ${currentTotal.toLocaleString('id-ID')}`;
-            resultBox.classList.remove('hidden');
+            list.innerHTML = paoItems.map(item => {
+                const openDate = new Date(item.dateOpened);
+                const expDate = new Date(openDate);
+                expDate.setMonth(expDate.getMonth() + parseInt(item.months));
+
+                const today = new Date();
+                const diffTime = expDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                let statusColor = "bg-emerald-500/20 text-emerald-300 border-emerald-600";
+                let statusText = `${diffDays} Hari Sisa`;
+
+                if (diffDays <= 0) {
+                    statusColor = "bg-rose-500/20 text-rose-300 border-rose-600";
+                    statusText = "Kedaluwarsa!";
+                } else if (diffDays <= 30) {
+                    statusColor = "bg-amber-500/20 text-amber-300 border-amber-600";
+                    statusText = `${diffDays} Hari Lagi`;
+                }
+
+                return `
+                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-between text-xs">
+                        <div>
+                            <h5 class="font-bold text-white">${item.name}</h5>
+                            <p class="text-[10px] text-slate-400">Dibuka: ${item.dateOpened} (${item.months} Bulan PAO)</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded-full border ${statusColor} text-[10px] font-bold">
+                                ${statusText}
+                            </span>
+                            <button onclick="removePAO(${item.id})" class="text-slate-500 hover:text-rose-400"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addPAOItem(e) {
+            e.preventDefault();
+            const name = document.getElementById('pao-name').value;
+            const dateOpened = document.getElementById('pao-date').value;
+            const months = document.getElementById('pao-months').value;
+
+            const newItem = {
+                id: Date.now(),
+                name,
+                dateOpened,
+                months
+            };
+
+            paoItems.push(newItem);
+            localStorage.setItem('glow_pao_items', JSON.stringify(paoItems));
+            renderPAOList();
+            document.getElementById('pao-form').reset();
+            showToast("Produk berhasil ditambahkan ke Tracker PAO!");
+        }
+
+        function removePAO(id) {
+            paoItems = paoItems.filter(i => i.id !== id);
+            localStorage.setItem('glow_pao_items', JSON.stringify(paoItems));
+            renderPAOList();
+            showToast("Produk dihapus dari Tracker.");
+        }
+
+        // --- REVIEWS SYSTEM ---
+        function renderReviews() {
+            const grid = document.getElementById('reviews-grid');
+            grid.innerHTML = reviewsData.map(rev => `
+                <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-slate-800 text-sm">${rev.name}</h4>
+                        <span class="text-xs text-slate-400">${rev.time}</span>
+                    </div>
+                    <div class="text-amber-400 text-xs">
+                        ${'★'.repeat(rev.rating)}
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">"${rev.comment}"</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleReviewForm() {
+            const form = document.getElementById('review-form-container');
+            form.classList.toggle('hidden');
+        }
+
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('rev-name').value;
+            const rating = parseInt(document.getElementById('rev-rating').value);
+            const comment = document.getElementById('rev-comment').value;
+
+            reviewsData.unshift({
+                id: Date.now(),
+                name,
+                rating,
+                comment,
+                time: "Baru saja"
+            });
+
+            renderReviews();
+            toggleReviewForm();
+            showToast("Ulasan Anda berhasil ditambahkan!");
+        }
+
+        // --- SIMULATED CART LOGIC ---
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (product) {
+                cart.push(product);
+                updateCartUI();
+                showToast(`${product.name} ditambahkan ke keranjang.`);
+            }
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items-container');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-xs text-slate-400 py-6">Keranjang simulasi masih kosong.</p>`;
+                document.getElementById('cart-total-price').innerText = 'Rp 0';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="flex items-center gap-2">
+                            <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover" alt="${item.name}">
+                            <div>
+                                <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${item.name}</h5>
+                                <p class="text-[10px] text-emerald-700 font-extrabold">Rp ${item.price.toLocaleString('id-ID')}</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="text-slate-400 hover:text-rose-500 text-xs p-1"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-total-price').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        function checkoutSimulation() {
+            if (cart.length === 0) {
+                showToast("Keranjang Anda masih kosong!");
+                return;
+            }
+            cart = [];
+            updateCartUI();
+            toggleCartModal();
+            showToast("Simulasi Pembelian Berhasil! Terima kasih.");
+        }
+
+        // --- CONSULTATION SIMULATOR ---
+        function handleConsultationSubmit(e) {
+            e.preventDefault();
+            const doc = document.getElementById('selected-doctor-input').value;
+            showToast(`Mengubungkan ke Live WhatsApp Simulation dengan ${doc}...`);
+        }
+
+        // --- TOAST UTILITY ---
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // --- INIT ON LOAD ---
+        window.onload = function() {
+            renderDoctors();
+            updateBudgetFilter();
+            renderIngredients();
+            filterCatalog('all');
+            renderQuiz();
+            renderPAOList();
+            renderReviews();
+            updateCartUI();
+
+            // Set Default PAO Date to Today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pao-date').value = today;
         }
     </script>
 </body>
 </html>
-
-
