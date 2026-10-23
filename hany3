@@ -1,0 +1,375 @@
+
+Percakapan dengan Gemini
+berikan 1 konsep projek untuk saya yang baru selesai melaksanakan pelatihan tik tentang dunia kecantikan seperti skincare atau perawatan wajah berikan secara rinci beserta contoh hasil jadinya websitenya
+
+Berikut adalah 1 konsep proyek yang sangat cocok untuk Anda yang baru menyelesaikan pelatihan TIK (Teknologi Informasi dan Komunikasi). Proyek ini menggabungkan keahlian dasar pemrograman web/desain digital dengan industri kecantikan (skincare dan perawatan wajah).
+
+📌 Konsep Proyek: "GlowGuide" – Personal Skincare & Routine Recommendation Web App
+ Deskripsi Singkat
+GlowGuide adalah aplikasi web interaktif yang membantu pengguna menemukan rutinitas skincare dan jenis produk perawatan wajah yang paling cocok berdasarkan tipe kulit (kering, berminyak, kombinasi, sensitif) dan keluhan wajah utama (jerawat, kusam, penuaan dini, bekas luka).
+
+ Rincian Fitur Utama Aplikasi
+Kuis Interaktif Tipe Kulit (Skin Analyzer Quiz):
+
+Pengguna menjawab 3–4 pertanyaan sederhana (misal: kondisi kulit di siang hari, respons kulit terhadap produk baru, keluhan utama).
+
+Algoritma JavaScript sederhana menentukan tipe kulit & memberikan rekomendasi rutinitas.
+
+Daftar Rutinitas Pagi & Malam (AM/PM Routine Steps):
+
+Menampilkan tahapan penggunaan skincare secara runut (Pembersih 
+→ Toner 
+→ Serum 
+→ Pelembab 
+→ Sunscreen).
+
+Fitur checklist harian (Interactive Checklist) untuk menandai apakah rutinitas sudah dilakukan hari ini.
+
+Katalog Produk & Bahan Aktif (Active Ingredients Guide):
+
+Informasi interaktif tentang kandungan populer seperti Niacinamide, Salicylic Acid, Hyaluronic Acid, Retinol, serta fungsinya untuk kulit.
+
+Kalkulator Masa Kedaluwarsa Produk (PAO - Period After Opening Tracker):
+
+Pengguna dapat memasukkan tanggal membuka produk untuk menghitung kapan produk tersebut harus diganti.
+
+ Modul TIK & Teknologi yang Digunakan
+HTML5 & CSS3 (Tailwind CSS/Bootstrap): Struktur layout yang responsive (bagus dibuka di HP maupun PC) dengan estetika visual ala brand skincare modern (warna pastel, bersih, minimalist).
+
+JavaScript (Vanilla JS / React JS):
+
+Logika kuis penentu tipe kulit.
+
+DOM Manipulation untuk menampilkan/menyembunyikan langkah rutinitas.
+
+Fitur Local Storage agar checklist rutinitas harian tersimpan meski browser ditutup.
+
+🌐 Contoh Hasil Jadi Website (Kode & Tampilan)
+Berikut adalah contoh hasil kode HTML, CSS, dan JavaScript lengkap yang sudah dapat langsung dijalankan untuk memvisualisasikan hasil jadi websitenya:
+
+HTML
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowGuide - Personal Skincare Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-rose-50 text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-rose-500">✨ GlowGuide</h1>
+        <nav class="space-x-4 text-sm font-medium">
+            <a href="#quiz" class="hover:text-rose-500">Kuis Kulit</a>
+            <a href="#routine" class="hover:text-rose-500">Rutinitas</a>
+            <a href="#ingredients" class="hover:text-rose-500">Bahan Aktif</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-12 px-4 bg-gradient-to-b from-rose-100 to-rose-50">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Temukan Rutinitas Skincare Terbaikmu</h2>
+        <p class="text-gray-600 max-w-lg mx-auto mb-6 text-sm">Pahami kebutuhan kulit wajahmu dan dapatkan panduan perawatan harian yang tepat secara konsisten.</p>
+        <a href="#quiz" class="bg-rose-500 text-white px-6 py-3 rounded-full font-medium hover:bg-rose-600 transition shadow-lg">Mulai Analisis Kulit</a>
+    </section>
+
+    <!-- Interactive Quiz Section -->
+    <section id="quiz" class="max-w-xl mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
+        <h3 class="text-xl font-bold text-center text-rose-600 mb-4">🔍 Analisis Singkat Tipe Kulit</h3>
+        
+        <div id="quiz-container">
+            <p class="font-medium mb-3">Bagaimana kondisi kulit wajahmu beberapa jam setelah dicuci?</p>
+            <div class="space-y-2">
+                <button onclick="setResult('Berminyak', 'Gunakan pembersih gentle, serum Niacinamide, pelembab gel ringan, dan sunscreen oil-free.')" 
+                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
+                    💦 Tampak mengkilap dan terasa berminyak di seluruh wajah
+                </button>
+                <button onclick="setResult('Kering', 'Gunakan pembersih hydrating, serum Hyaluronic Acid, pelembab krim kaya nutrisi, dan sunscreen melembabkan.')" 
+                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
+                    🌵 Terasa tertarik, kaku, atau kadang terkelupas
+                </button>
+                <button onclick="setResult('Kombinasi', 'Gunakan pembersih seimbang, pelembab berbasis air, serta atur penggunaan produk di area T-Zone.')" 
+                        class="w-full text-left p-3 border rounded-xl hover:bg-rose-50 hover:border-rose-300 transition">
+                    ☯️ Berminyak hanya di area T-Zone (dahi, hidung, dagu), pipi normal/kering
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Result Box -->
+        <div id="result-box" class="hidden mt-6 p-4 bg-rose-50 border border-rose-200 rounded-xl text-center">
+            <h4 class="font-bold text-lg text-rose-700 mb-1">Tipe Kulit Anda: <span id="skin-type"></span></h4>
+            <p id="skin-recommendation" class="text-sm text-gray-700 mb-4"></p>
+            <button onclick="resetQuiz()" class="text-xs text-rose-500 underline">Ulangi Kuis</button>
+        </div>
+    </section>
+
+    <!-- Interactive Routine Checklist Section -->
+    <section id="routine" class="max-w-xl mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
+        <h3 class="text-xl font-bold text-rose-600 mb-4">☀️ Checklist Rutinitas Pagi</h3>
+        <ul class="space-y-3">
+            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
+                <span class="text-sm font-medium">1. Gentle Facial Wash (Pembersih Wajah)</span>
+            </li>
+            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
+                <span class="text-sm font-medium">2. Hydrating Toner</span>
+            </li>
+            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
+                <span class="text-sm font-medium">3. Moisturizer (Pelembab Wajah)</span>
+            </li>
+            <li class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                <input type="checkbox" class="w-5 h-5 text-rose-500 rounded focus:ring-rose-400">
+                <span class="text-sm font-medium">4. Sunscreen SPF 30+ (Perlindungan UV)</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-gray-500 border-t bg-white mt-12">
+        <p>&copy; 2026 GlowGuide — Proyek Portfolio Pelatihan TIK Kecantikan</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function setResult(type, recommendation) {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-box').classList.remove('hidden');
+            document.getElementById('skin-type').innerText = type;
+            document.getElementById('skin-recommendation').innerText = recommendation;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('result-box').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
+ Nilai Tambah Proyek untuk Portofolio Anda
+Penyelesaian Masalah Nyata: Mengubah kebingungan orang memilih produk skincare menjadi langkah interaktif yang mudah dipahami.
+
+Keterampilan TIK Terbukti: Menunjukkan kemampuan Anda dalam membuat desain antarmuka (UI/UX) yang estetik, manipulasi elemen dengan JavaScript, serta struktur responsive modern.
+
+Peluang Pengembangan (Komersial): Ke depannya bisa ditambahkan fitur affiliate link ke e-commerce (Shopee/Tokopedia) jika pengguna ingin membeli produk rekomendasi tersebut.
+
+nah di dalamnya harus ada seperti konsultasi kepada semacam dokter gitu, trus bisa mendapatkan rekomendasi skincare , bisa request harga skincare nya juga, sesuai budget yang di miliki
+
+Konsep proyek GlowGuide dapat ditingkatkan dengan menambahkan modul Konsultasi & Smart Budgeting.
+
+Fitur tambahan ini tidak hanya menguji kemampuan logika pemrograman (JavaScript/Backend), tetapi juga memberikan nilai jual yang tinggi karena menyelesaikan masalah nyata: mencari skincare yang tepat, sesuai rekomendasi ahli, dan ramah di kantong.
+
+🚀 Pembaruan Konsep Proyek: GlowGuide Pro (Consultation & Budgeting)
+💡 Rincian Fitur Baru yang Ditambahkan:
+Modul Konsultasi Virtual (Dokter / Beauty Expert):
+
+Formulir Konsultasi Interaktif: Pengguna mengisi data keluhan, mengunggah foto kondisi kulit, dan memilih jadwal konsultasi.
+
+Sistem Chat Simulasi / Reservasi: Antarmuka chatting tempat pengguna berdiskusi langsung dengan pakar/dokter estetika atau memesan sesi konsultasi via WhatsApp/Video Call.
+
+Smart Budget Filter (Rekomendasi Sesuai Anggaran):
+
+Pengguna memasukkan rentang anggaran (budget) yang dimiliki (misal: Rp 50.000 – Rp 150.000 atau Rp 200.000 – Rp 500.000).
+
+Sistem secara otomatis memfilter paket skincare (Pembersih + Pelembab + Sunscreen) yang jumlah total harganya tidak melebihi budget tersebut.
+
+E-Prescription / Rekomendasi Dokter:
+
+Hasil akhir konsultasi berupa lembar resep/rekomendasi digital berisi daftar produk lengkap beserta total harganya.
+
+🌐 Contoh Hasil Jadi Website (Kode & Tampilan Interaktif)
+Berikut adalah contoh kode HTML, CSS (Tailwind CSS), dan JavaScript lengkap yang memperagakan fitur konsultasi dan rekomendasi berdasarkan budget:
+
+HTML
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowGuide Pro - Konsultasi & Rekomendasi Skincare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-rose-50 text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-2xl font-bold text-rose-500">✨ GlowGuide Pro</h1>
+        <nav class="space-x-4 text-sm font-medium">
+            <a href="#consultation" class="hover:text-rose-500">Konsultasi Dokter</a>
+            <a href="#budget-finder" class="hover:text-rose-500">Cari Sesuai Budget</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-10 px-4 bg-gradient-to-b from-rose-100 to-rose-50">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Konsultasi Skincare & Rekomendasi Pas Budget</h2>
+        <p class="text-gray-600 max-w-md mx-auto text-sm">Dapatkan rekomendasi rutinitas wajah langsung dari ahli dengan harga yang disesuaikan dengan dompetmu.</p>
+    </section>
+
+    <div class="max-w-4xl mx-auto p-4 grid md:grid-cols-2 gap-6">
+
+        <!-- FITUR 1: Formulir Konsultasi Dokter -->
+        <section id="consultation" class="bg-white p-6 rounded-2xl shadow-md border border-rose-100">
+            <h3 class="text-lg font-bold text-rose-600 mb-1 flex items-center gap-2">
+                🩺 Konsultasi Virtual Dokter
+            </h3>
+            <p class="text-xs text-gray-500 mb-4">Isi keluhan kulitmu untuk dijadwalkan dengan Dokter Estetika.</p>
+
+            <form id="consultForm" onsubmit="handleConsultation(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Nama Lengkap</label>
+                    <input type="text" id="patientName" required placeholder="Contoh: Anisa" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Keluhan Utama Kulit</label>
+                    <select id="skinIssue" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
+                        <option value="Jerawat & Blemish">Jerawat & Bruntusan</option>
+                        <option value="Kusam & Bekas Jerawat">Kusam & Bekas Jerawat</option>
+                        <option value="Kulit Kering & Kaku">Kulit Kering & Sensitif</option>
+                        <option value="Penuaan Dini">Garis Halus / Penuaan Dini</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Pesan / Catatan Tambahan</label>
+                    <textarea id="patientNotes" rows="2" placeholder="Sebutkan produk yang sedang dipakai saat ini..." class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-rose-500 text-white py-2.5 rounded-xl font-medium text-sm hover:bg-rose-600 transition">
+                    Kirim & Hubungi Dokter (WhatsApp)
+                </button>
+            </form>
+        </section>
+
+        <!-- FITUR 2: Smart Budget Skincare Recommendation -->
+        <section id="budget-finder" class="bg-white p-6 rounded-2xl shadow-md border border-rose-100">
+            <h3 class="text-lg font-bold text-rose-600 mb-1 flex items-center gap-2">
+                💰 Rekomendasi Sesuai Budget
+            </h3>
+            <p class="text-xs text-gray-500 mb-4">Tentukan batas maksimal anggaran belanja skincare harianmu.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Pilih Tipe Kulit</label>
+                    <select id="budgetSkinType" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
+                        <option value="berminyak">Berminyak / Berjerawat</option>
+                        <option value="kering">Kering / Dehidrasi</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Batas Maksimal Budget (Rp)</label>
+                    <input type="number" id="maxBudget" placeholder="Contoh: 150000" class="w-full p-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-rose-400 outline-none">
+                </div>
+
+                <button onclick="findSkincareByBudget()" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl font-medium text-sm hover:bg-emerald-700 transition">
+                    Cari Paket Skincare
+                </button>
+
+                <!-- Result Area -->
+                <div id="budgetResult" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                    <h4 class="font-bold text-emerald-800 text-sm mb-2">Rekomendasi Paket Produk:</h4>
+                    <ul id="productList" class="text-xs text-gray-700 space-y-1 divide-y divide-emerald-100"></ul>
+                    <div class="mt-3 pt-2 border-t border-emerald-200 flex justify-between font-bold text-xs text-emerald-900">
+                        <span>Total Est. Harga:</span>
+                        <span id="totalPrice">Rp 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-gray-500 border-t bg-white mt-8">
+        <p>&copy; 2026 GlowGuide Pro — Project Web TIK Kecantikan & Kesehatan</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Database Produk Simulasi
+        const productsDB = {
+            berminyak: [
+                { name: "Facial Wash Anti-Acne 100ml", price: 35000 },
+                { name: "Niacinamide 5% Serum 20ml", price: 55000 },
+                { name: "Lightweight Gel Moisturizer 30g", price: 45000 },
+                { name: "Sunscreen Matte Finish SPF 30", price: 40000 }
+            ],
+            kering: [
+                { name: "Gentle Hydrating Cleanser 100ml", price: 40000 },
+                { name: "Hyaluronic Acid Serum 20ml", price: 60000 },
+                { name: "Rich Moisture Cream 30g", price: 50000 },
+                { name: "Hydrating Sunscreen SPF 50", price: 45000 }
+            ]
+        };
+
+        // Handle Form Konsultasi
+        function handleConsultation(e) {
+            e.preventDefault();
+            const name = document.getElementById('patientName').value;
+            const issue = document.getElementById('skinIssue').value;
+            const notes = document.getElementById('patientNotes').value;
+
+            // Format Pesan WhatsApp
+            const message = `Halo Dokter GlowGuide,%0ANama: ${name}%0AKeluhan: ${issue}%0ANote: ${notes}%0A%0AMohon bantuan konsul rekomendasi skincare.`;
+            
+            // Redirect ke WhatsApp (Nomor Contoh)
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+        }
+
+        // Logic Filter Berdasarkan Budget
+        function findSkincareByBudget() {
+            const skinType = document.getElementById('budgetSkinType').value;
+            const userBudget = parseInt(document.getElementById('maxBudget').value);
+            const resultBox = document.getElementById('budgetResult');
+            const productList = document.getElementById('productList');
+            const totalPriceEl = document.getElementById('totalPrice');
+
+            if (isNaN(userBudget) || userBudget <= 0) {
+                alert("Masukkan nominal budget yang valid!");
+                return;
+            }
+
+            const availableProducts = productsDB[skinType];
+            let selectedProducts = [];
+            let currentTotal = 0;
+
+            // Memilih produk yang muat dalam budget
+            for (let item of availableProducts) {
+                if (currentTotal + item.price <= userBudget) {
+                    selectedProducts.push(item);
+                    currentTotal += item.price;
+                }
+            }
+
+            // Render Hasil
+            productList.innerHTML = "";
+            if (selectedProducts.length === 0) {
+                productList.innerHTML = `<li class="text-rose-600 font-semibold py-1">Budget belum mencukupi untuk paket dasar. Coba naikkan nominal budget.</li>`;
+            } else {
+                selectedProducts.forEach(item => {
+                    productList.innerHTML += `
+                        <li class="py-1 flex justify-between">
+                            <span>• ${item.name}</span>
+                            <span class="font-medium">Rp ${item.price.toLocaleString('id-ID')}</span>
+                        </li>`;
+                });
+            }
+
+            totalPriceEl.innerText = `Rp ${currentTotal.toLocaleString('id-ID')}`;
+            resultBox.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
+
