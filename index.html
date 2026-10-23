@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowGuide Pro - Konsultasi & Smart Skincare Routine</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe3',
+                            200: '#c7d7c7',
+                            300: '#a3be1a3',
+                            400: '#7fa17f',
+                            500: '#5c855c',
+                            600: '#466946',
+                            700: '#385338',
+                            800: '#2e432e',
+                            900: '#273827',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-emerald-950 text-gray-800 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-emerald-900/90 backdrop-blur-md border-b border-emerald-800/50 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-300 flex items-center justify-center text-emerald-950 text-xl font-black shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-200 via-teal-100 to-white bg-clip-text text-transparent">GlowGuide</span>
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-700/60 text-emerald-300 font-semibold border border-emerald-600/40 ml-1">PRO</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8 font-medium text-sm text-emerald-100/80">
+                    <a href="#home" class="hover:text-emerald-300 transition-colors">Beranda</a>
+                    <a href="#doctors" class="hover:text-emerald-300 transition-colors">Konsultasi Dokter</a>
+                    <a href="#smart-budget" class="hover:text-emerald-300 transition-colors">Smart Budget</a>
+                    <a href="#skin-quiz" class="hover:text-emerald-300 transition-colors">Kuis Kulit</a>
+                    <a href="#pao-tracker" class="hover:text-emerald-300 transition-colors">PAO Tracker</a>
+                    <a href="#ingredients" class="hover:text-emerald-300 transition-colors">Bahan Aktif</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button onclick="openCartModal()" class="relative p-2.5 rounded-xl bg-emerald-800/60 hover:bg-emerald-800 text-emerald-200 transition border border-emerald-700/50">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-emerald-400 text-emerald-950 font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-emerald-900 shadow">0</span>
+                    </button>
+                    <a href="#smart-budget" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 text-emerald-950 font-bold text-sm hover:brightness-110 transition shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Cari Skincare
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-emerald-900 via-emerald-900/90 to-emerald-950 text-white pt-12 pb-24 border-b border-emerald-800/40">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-800/60 border border-emerald-700/60 text-emerald-300 text-xs font-semibold backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Platform Kesehatan Kulit #1 Terintegrasi Budget
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Kulit Sehat Impian, <br>
+                        <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-100 bg-clip-text text-transparent">Sesuai Budget Anda.</span>
+                    </h1>
+                    <p class="text-emerald-100/70 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal">
+                        Dapatkan rekomendasi skincare tepat guna hasil konsultasi dokter estetika bersertifikat. Bebas pilih paket berdasarkan budget harian tanpa over-claim!
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#smart-budget" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-400 to-teal-400 text-emerald-950 font-bold hover:shadow-xl hover:shadow-emerald-500/20 hover:scale-105 transition duration-300 flex items-center gap-2">
+                            <i class="fa-solid fa-calculator"></i> Hitung Sesuai Budget
+                        </a>
+                        <a href="#doctors" class="px-7 py-3.5 rounded-2xl bg-emerald-800/80 hover:bg-emerald-800 text-emerald-100 font-semibold border border-emerald-700/80 hover:border-emerald-600 transition duration-300 flex items-center gap-2 backdrop-blur-md">
+                            <i class="fa-solid fa-user-doctor text-emerald-400"></i> Konsul Dokter
+                        </a>
+                    </div>
+
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-emerald-800/60 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl font-extrabold text-emerald-300">15.000+</p>
+                            <p class="text-xs text-emerald-200/60 font-medium">Pengguna Aktif</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-emerald-300">98.4%</p>
+                            <p class="text-xs text-emerald-200/60 font-medium">Tingkat Kepuasan</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-emerald-300">100%</p>
+                            <p class="text-xs text-emerald-200/60 font-medium">BPOM Verified</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <div class="rounded-3xl overflow-hidden border border-emerald-700/50 shadow-2xl bg-gradient-to-br from-emerald-800/40 to-emerald-900/80 p-3 backdrop-blur-xl">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Skincare Care" class="rounded-2xl w-full h-80 object-cover">
+                            <div class="p-4 space-y-3">
+                                <div class="flex items-center justify-between text-xs text-emerald-200">
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Dermatologist Approved</span>
+                                    <span class="bg-emerald-700/50 px-2 py-0.5 rounded text-[10px]">Eco-Friendly</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Solusi Perawatan Herbal & Bioteknologi Modern</h3>
+                                <p class="text-xs text-emerald-100/70">Formula dirancang khusus untuk kondisi iklim tropis Indonesia dengan ekstrak alami pilihan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="bg-gradient-to-b from-emerald-950 via-emerald-900/20 to-emerald-950 py-16 space-y-24">
+
+        <!-- Dokter Section -->
+        <section id="doctors" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Layanan Medis Terpercaya</span>
+                <h2 class="text-3xl font-extrabold text-white">Konsultasi Dokter Estetika & Spesialis Kulit</h2>
+                <p class="text-emerald-200/70 text-sm">Pilih dokter pilihan Anda untuk mendapatkan analisis mendalam dan resep rekomendasi skincare yang aman.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Doctor Card 1 -->
+                <div class="bg-emerald-900/40 rounded-3xl p-6 border border-emerald-800/60 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative mb-4">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dr. Sarah" class="w-full h-48 object-cover rounded-2xl">
+                            <span class="absolute top-3 right-3 bg-emerald-500 text-emerald-950 font-bold text-[10px] px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-950 animate-ping"></span> ONLINE
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">dr. Sarah Amanda, Sp.DVE</h3>
+                        <p class="text-xs text-emerald-300 font-medium mb-3">Spesialis Dermatologi & Estetika</p>
+                        <div class="flex items-center gap-2 text-xs text-emerald-200/60 mb-4">
+                            <span><i class="fa-solid fa-briefcase text-emerald-400"></i> 7 Tahun Exp</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-amber-400"></i> 4.9 (1.2k)</span>
+                        </div>
+                    </div>
+                    <button onclick="openConsultModal('dr. Sarah Amanda, Sp.DVE')" class="w-full py-3 rounded-xl bg-emerald-700/60 hover:bg-emerald-600 text-white font-semibold text-sm transition border border-emerald-600/50 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-300"></i> Buat Janji Konsul
+                    </button>
+                </div>
+
+                <!-- Doctor Card 2 -->
+                <div class="bg-emerald-900/40 rounded-3xl p-6 border border-emerald-800/60 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative mb-4">
+                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="Dr. Reza" class="w-full h-48 object-cover rounded-2xl">
+                            <span class="absolute top-3 right-3 bg-emerald-500 text-emerald-950 font-bold text-[10px] px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-950 animate-ping"></span> ONLINE
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">dr. M. Reza Pratama, M.Biomed</h3>
+                        <p class="text-xs text-emerald-300 font-medium mb-3">Pakar Acne & Barrier Care</p>
+                        <div class="flex items-center gap-2 text-xs text-emerald-200/60 mb-4">
+                            <span><i class="fa-solid fa-briefcase text-emerald-400"></i> 5 Tahun Exp</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-amber-400"></i> 4.8 (950)</span>
+                        </div>
+                    </div>
+                    <button onclick="openConsultModal('dr. M. Reza Pratama, M.Biomed')" class="w-full py-3 rounded-xl bg-emerald-700/60 hover:bg-emerald-600 text-white font-semibold text-sm transition border border-emerald-600/50 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-300"></i> Buat Janji Konsul
+                    </button>
+                </div>
+
+                <!-- Doctor Card 3 -->
+                <div class="bg-emerald-900/40 rounded-3xl p-6 border border-emerald-800/60 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative mb-4">
+                            <img src="https://images.unsplash.com/photo-1594824813566-7885a6978f4f?auto=format&fit=crop&w=400&q=80" alt="Dr. Nadia" class="w-full h-48 object-cover rounded-2xl">
+                            <span class="absolute top-3 right-3 bg-emerald-500 text-emerald-950 font-bold text-[10px] px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-950 animate-ping"></span> ONLINE
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">dr. Nadia Utami, Sp.DVE</h3>
+                        <p class="text-xs text-emerald-300 font-medium mb-3">Spesialis Anti-Aging & Hiperpigmentasi</p>
+                        <div class="flex items-center gap-2 text-xs text-emerald-200/60 mb-4">
+                            <span><i class="fa-solid fa-briefcase text-emerald-400"></i> 9 Tahun Exp</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-amber-400"></i> 5.0 (2.1k)</span>
+                        </div>
+                    </div>
+                    <button onclick="openConsultModal('dr. Nadia Utami, Sp.DVE')" class="w-full py-3 rounded-xl bg-emerald-700/60 hover:bg-emerald-600 text-white font-semibold text-sm transition border border-emerald-600/50 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-300"></i> Buat Janji Konsul
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Budget Calculator Section -->
+        <section id="smart-budget" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="bg-gradient-to-br from-emerald-900/80 to-emerald-950 rounded-3xl p-6 sm:p-10 border border-emerald-700/50 shadow-2xl">
+                <div class="max-w-3xl mx-auto text-center space-y-3 mb-10">
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Fitur Unggulan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Smart Budget Skincare Finder</h2>
+                    <p class="text-emerald-200/70 text-sm">Atur batas anggaran belanja Anda dan biarkan sistem memilihkan rangkaian produk paling efektif tanpa bikin kantong bolong.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    <!-- Controls -->
+                    <div class="lg:col-span-5 bg-emerald-900/60 p-6 rounded-2xl border border-emerald-800/80 space-y-5">
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-200 mb-2 uppercase tracking-wider">1. Pilih Tipe Kulit</label>
+                            <select id="budget-skin-type" class="w-full bg-emerald-950 border border-emerald-700/70 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400">
+                                <option value="berminyak">Berminyak & Berjerawat</option>
+                                <option value="kering">Kering & Dehidrasi</option>
+                                <option value="kombinasi">Kombinasi (T-Zone Oil)</option>
+                                <option value="sensitif">Sensitif & Kemerahan</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-200 mb-2 uppercase tracking-wider">2. Fokus Perawatan Utama</label>
+                            <select id="budget-focus" class="w-full bg-emerald-950 border border-emerald-700/70 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400">
+                                <option value="basic">Basic Routine (Cleanse & Protect)</option>
+                                <option value="acne">Atasi Jerawat & Bruntusan</option>
+                                <option value="brightening">Mencerahkan & Flek Hitam</option>
+                                <option value="barrier">Perbaikan Skin Barrier</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold text-emerald-200 uppercase tracking-wider">3. Batas Maksimal Budget</label>
+                                <span id="budget-display-val" class="text-emerald-400 font-extrabold text-base">Rp 150.000</span>
+                            </div>
+                            <input type="range" id="budget-range" min="50000" max="500000" step="10000" value="150000" class="w-full accent-emerald-400 bg-emerald-950 h-2 rounded-lg cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-emerald-300/50 mt-1">
+                                <span>Rp 50rb</span>
+                                <span>Rp 250rb</span>
+                                <span>Rp 500rb</span>
+                            </div>
+                        </div>
+
+                        <button onclick="calculateBudgetSkincare()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 text-emerald-950 font-bold text-sm hover:brightness-110 transition shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass-dollar"></i> Cari Paket Terbaik
+                        </button>
+                    </div>
+
+                    <!-- Output Results -->
+                    <div class="lg:col-span-7 bg-emerald-950/60 p-6 rounded-2xl border border-emerald-800/80 min-h-[360px] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-emerald-800/60">
+                                <h3 class="font-bold text-white text-base">Rekomendasi Paket Skincare</h3>
+                                <span id="result-count" class="text-xs bg-emerald-800/60 text-emerald-300 px-3 py-1 rounded-full border border-emerald-700/50">0 Produk</span>
+                            </div>
+
+                            <div id="budget-results-list" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                                <div class="text-center py-12 text-emerald-300/40 text-sm">
+                                    <i class="fa-solid fa-calculator text-4xl mb-3 block opacity-50"></i>
+                                    Atur parameter di sebelah kiri lalu klik "Cari Paket Terbaik".
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 mt-4 border-t border-emerald-800/60 flex flex-wrap items-center justify-between gap-4">
+                            <div>
+                                <p class="text-xs text-emerald-300/60 font-medium">Total Estimasi Harga:</p>
+                                <p id="budget-total-price" class="text-2xl font-black text-emerald-300">Rp 0</p>
+                            </div>
+                            <button id="add-all-cart-btn" onclick="addAllToCart()" disabled class="px-6 py-2.5 rounded-xl bg-emerald-700/40 text-emerald-300/50 font-bold text-xs cursor-not-allowed border border-emerald-800 flex items-center gap-2 transition">
+                                <i class="fa-solid fa-cart-plus"></i> Tambah Semua ke Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kuis Tipe Kulit Section -->
+        <section id="skin-quiz" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="bg-gradient-to-br from-emerald-900/60 to-emerald-900/30 rounded-3xl p-6 sm:p-10 border border-emerald-800/80">
+                <div class="text-center space-y-2 mb-8">
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Skin Analyzer Quiz</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Bingung Tipe Kulitmu? Coba Kuis Ini</h2>
+                    <p class="text-emerald-200/70 text-xs sm:text-sm">Jawab 3 pertanyaan singkat untuk mengetahui diagnosis awal jenis kulitmu.</p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-emerald-950 h-2 rounded-full overflow-hidden border border-emerald-800">
+                        <div id="quiz-progress" class="bg-emerald-400 h-full w-1/3 transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div id="quiz-step-1" class="quiz-step space-y-4">
+                        <p class="font-bold text-emerald-100 text-sm sm:text-base">1. Bagaimana rasanya kulit wajahmu 1 jam setelah dicuci tanpa memakai produk apa pun?</p>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <button onclick="answerQuiz(1, 'oily')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                <i class="fa-solid fa-droplet text-emerald-400 mb-2 block text-lg"></i>
+                                Mengkilap dan terasa berminyak di seluruh wajah
+                            </button>
+                            <button onclick="answerQuiz(1, 'dry')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                <i class="fa-solid fa-sun text-amber-400 mb-2 block text-lg"></i>
+                                Kaku, kencang tertarik, atau terasa gatal
+                            </button>
+                            <button onclick="answerQuiz(1, 'combo')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                <i class="fa-solid fa-yin-yang text-teal-400 mb-2 block text-lg"></i>
+                                Berminyak di area T-Zone, pipi normal/kering
+                            </button>
+                            <button onclick="answerQuiz(1, 'sensitive')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                <i class="fa-solid fa-hand-holding-heart text-rose-400 mb-2 block text-lg"></i>
+                                Mudah kemerahan, perih, atau terdapat ruam
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="quiz-step-2" class="quiz-step hidden space-y-4">
+                        <p class="font-bold text-emerald-100 text-sm sm:text-base">2. Seberapa sering kamu mengalami masalah jerawat atau bruntusan?</p>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <button onclick="answerQuiz(2, 'frequent')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Sangat sering (hampir setiap minggu ada jerawat aktif)
+                            </button>
+                            <button onclick="answerQuiz(2, 'pms')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Hanya saat PMS atau terpapar debu ekstrem
+                            </button>
+                            <button onclick="answerQuiz(2, 'rare')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Jarang sekali mengalami jerawat
+                            </button>
+                            <button onclick="answerQuiz(2, 'redness')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Lebih sering memerah daripada berjerawat
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="quiz-step-3" class="quiz-step hidden space-y-4">
+                        <p class="font-bold text-emerald-100 text-sm sm:text-base">3. Apa gol utama yang ingin kamu capai dalam perawatan kulit saat ini?</p>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <button onclick="answerQuiz(3, 'oil_control')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Mengontrol minyak berlebih & menyembuhkan jerawat
+                            </button>
+                            <button onclick="answerQuiz(3, 'hydration')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Melembabkan kulit kering & membuat kulit glowing
+                            </button>
+                            <button onclick="answerQuiz(3, 'bright')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Memudarkan noda hitam & mencerahkan kulit kusam
+                            </button>
+                            <button onclick="answerQuiz(3, 'calm')" class="p-4 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-800 hover:border-emerald-500 rounded-xl text-left text-xs sm:text-sm text-emerald-200 transition">
+                                Meredakan iritasi & memperkuat skin barrier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result -->
+                    <div id="quiz-result" class="hidden p-6 bg-emerald-950 border border-emerald-600/50 rounded-2xl text-center space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-emerald-300 font-semibold">Hasil Diagnosis Kulit Anda:</span>
+                            <h3 id="quiz-type-result" class="text-2xl font-black text-white">Kulit Berminyak & Acne-Prone</h3>
+                        </div>
+                        <p id="quiz-desc-result" class="text-xs sm:text-sm text-emerald-200/70 max-w-lg mx-auto">
+                            Kulit Anda memproduksi sebum berlebih yang rentan menyumbat pori-pori. Gunakan bahan aktif seperti Niacinamide, Salicylic Acid, atau Cica.
+                        </p>
+                        <div class="flex justify-center gap-3 pt-2">
+                            <button onclick="applyQuizToBudget()" class="px-5 py-2.5 rounded-xl bg-emerald-400 text-emerald-950 font-bold text-xs hover:bg-emerald-300 transition">
+                                Pakai Hasil Kuis di Smart Budget
+                            </button>
+                            <button onclick="resetQuiz()" class="px-5 py-2.5 rounded-xl bg-emerald-800/60 text-emerald-200 font-medium text-xs hover:bg-emerald-800 transition">
+                                Ulangi Kuis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAO Expiry Tracker Section -->
+        <section id="pao-tracker" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="bg-gradient-to-br from-emerald-900/60 to-emerald-950 rounded-3xl p-6 sm:p-10 border border-emerald-800/80">
+                <div class="max-w-3xl mx-auto text-center space-y-3 mb-10">
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Fitur Pengingat Digital</span>
+                    <h2 class="text-3xl font-extrabold text-white">PAO Tracker (Period After Opening)</h2>
+                    <p class="text-emerald-200/70 text-sm">Catat tanggal buka produk skincare-mu untuk memantau sisa masa pakai sebelum kedaluwarsa demi keamanan kulit.</p>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-8">
+                    <!-- Form Tambah PAO -->
+                    <form onsubmit="addPAOProduct(event)" class="md:col-span-5 bg-emerald-900/40 p-6 rounded-2xl border border-emerald-800/60 space-y-4">
+                        <h3 class="font-bold text-white text-sm border-b border-emerald-800/80 pb-2">Tambah Produk Baru</h3>
+                        <div>
+                            <label class="block text-xs text-emerald-200 font-semibold mb-1">Nama Produk Skincare</label>
+                            <input type="text" id="pao-name" required placeholder="Contoh: Gentle Cleanser 100ml" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-400">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-emerald-200 font-semibold mb-1">Tgl Dibuka</label>
+                                <input type="date" id="pao-date" required class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-emerald-200 font-semibold mb-1">Masa PAO (Bulan)</label>
+                                <select id="pao-months" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-400">
+                                    <option value="3">3 Bulan (3M)</option>
+                                    <option value="6" selected>6 Bulan (6M)</option>
+                                    <option value="12">12 Bulan (12M)</option>
+                                    <option value="24">24 Bulan (24M)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold text-xs transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Simpan Pelacak
+                        </button>
+                    </form>
+
+                    <!-- List PAO Tracker -->
+                    <div class="md:col-span-7 bg-emerald-950/40 p-6 rounded-2xl border border-emerald-800/60 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm border-b border-emerald-800/80 pb-2 mb-4">Daftar Produk Aktif Saya</h3>
+                            <div id="pao-list" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+                                <!-- PAO Items injected by JS -->
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-emerald-300/40 mt-4 italic">*Data tersimpan secara otomatis di memori browser lokal Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ensiklopedia Bahan Aktif Section -->
+        <section id="ingredients" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Edukasi Skincare</span>
+                <h2 class="text-3xl font-extrabold text-white">Ensiklopedia Bahan Aktif Populer</h2>
+                <p class="text-emerald-200/70 text-sm">Pahami fungsi bahan kimia & ekstrak herbal agar Anda cerdas memilih kombinasi kandungan.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Ingredient 1 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Centella Asiatica (Cica)</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Pereda Kemerahan & Skin Barrier</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Ekstrak herbal alami yang efektif meredakan peradangan jerawat, mempercepat penyembuhan luka, serta memperkuat lapisan pertahanan kulit.</p>
+                </div>
+
+                <!-- Ingredient 2 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Niacinamide (Vit B3)</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Mencerahkan & Pengontrol Sebum</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Multifungsi untuk memudarkan noda hitam bekas jerawat, mengecilkan tampilan pori-pori, dan mengontrol produksi minyak berlebih.</p>
+                </div>
+
+                <!-- Ingredient 3 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Salicylic Acid (BHA)</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Eksfoliasi Pori & Anti-Acne</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Bahan larut minyak yang dapat menembus ke dalam pori-pori untuk membersihkan komedo, sel kulit mati, dan bakteri penyebab jerawat.</p>
+                </div>
+
+                <!-- Ingredient 4 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-bottle-droplet"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Hyaluronic Acid</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Hidrasi Mendalam</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Mampu mengikat molekul air hingga 1000x beratnya. Sangat cocok untuk mengunci kelembapan kulit kering dan dehidrasi.</p>
+                </div>
+
+                <!-- Ingredient 5 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Retinol (Vit A)</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Anti-Aging & Rejuvenasi</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Merangsang regenerasi sel kulit baru dan pembentukan kolagen untuk menyamarkan garis halus dan menghaluskan tekstur kulit.</p>
+                </div>
+
+                <!-- Ingredient 6 -->
+                <div class="bg-emerald-900/30 p-6 rounded-2xl border border-emerald-800/60 hover:border-emerald-500/40 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Tea Tree Oil</h3>
+                    <p class="text-xs text-emerald-300 mb-3">Antiseptik Alami</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed">Bahan antibakteri alami yang terbukti ampuh mengeringkan jerawat aktif tanpa memicu resistensi antibiotik pada kulit.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni & Komunitas Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-emerald-900/80 via-emerald-800/40 to-emerald-900/80 rounded-3xl p-8 sm:p-12 border border-emerald-700/50">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Testimoni Komunitas</span>
+                        <h2 class="text-3xl font-extrabold text-white">Apa Kata Mereka Tentang GlowGuide?</h2>
+                        <p class="text-xs sm:text-sm text-emerald-200/70 leading-relaxed">
+                            Ribuan pengguna telah berhasil menemukan kombinasi skincare yang pas tanpa buang-buang uang secara eksperimental.
+                        </p>
+                        
+                        <!-- Mini Review Form -->
+                        <form onsubmit="submitReview(event)" class="pt-4 space-y-3">
+                            <input type="text" id="rev-name" required placeholder="Nama Anda" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-400">
+                            <textarea id="rev-msg" required placeholder="Tuliskan pengalaman Anda..." rows="2" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-400"></textarea>
+                            <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-400 text-emerald-950 font-bold text-xs hover:bg-emerald-300 transition">
+                                Kirim Ulasan
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+                        <div class="bg-emerald-950/80 p-5 rounded-2xl border border-emerald-800/80 space-y-3">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs text-emerald-100/80 italic">"Fitur Smart Budget-nya juara banget! Akhirnya nemu rangkaian skincare jerawat cuma 120 ribu dan dalam 2 minggu bruntusan berkurang."</p>
+                            <div class="flex items-center gap-3 pt-2">
+                                <div class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center font-bold text-xs text-white">AN</div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Anisa Nurdiani</p>
+                                    <p class="text-[10px] text-emerald-300/60">Mahasiswi, Bandung</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-950/80 p-5 rounded-2xl border border-emerald-800/80 space-y-3">
+                            <div class="flex items-center gap-1 text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs text-emerald-100/80 italic">"Konsultasi via WA ke dr. Sarah sangat responsif. Dikasih resep produk yang pas dan bisa langsung dihitung budgetnya di web."</p>
+                            <div class="flex items-center gap-3 pt-2">
+                                <div class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center font-bold text-xs text-white">RP</div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Rian Pratama</p>
+                                    <p class="text-[10px] text-emerald-300/60">Karyawan, Jakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 border-t border-emerald-800/60 text-emerald-200/60 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-400 flex items-center justify-center text-emerald-950 text-sm font-bold">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="text-lg font-extrabold text-white">GlowGuide PRO</span>
+                </div>
+                <p class="leading-relaxed">Platform edukasi dan rekomendasi skincare interaktif berbasis teknologi informasi & komunikasi.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3">Navigasi Cepat</h4>
+                <ul class="space-y-2">
+                    <li><a href="#doctors" class="hover:text-emerald-300">Konsultasi Medis</a></li>
+                    <li><a href="#smart-budget" class="hover:text-emerald-300">Kalkulator Budget</a></li>
+                    <li><a href="#skin-quiz" class="hover:text-emerald-300">Analisis Tipe Kulit</a></li>
+                    <li><a href="#pao-tracker" class="hover:text-emerald-300">PAO Expiry Tracker</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3">Bantuan & Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-emerald-300">Syarat & Ketentuan</a></li>
+                    <li><a href="#" class="hover:text-emerald-300">Kebijakan Privasi Medis</a></li>
+                    <li><a href="#" class="hover:text-emerald-300">Panduan Penggunaan</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3">Kontak & Sosial Media</h4>
+                <div class="flex items-center gap-3 text-base text-emerald-300">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-900 pt-6 text-center">
+            <p>&copy; 2026 GlowGuide Pro — Proyek Portofolio Pelatihan TIK Kecantikan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Konsultasi Dokter -->
+    <div id="consult-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-emerald-900 border border-emerald-700/60 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closeConsultModal()" class="absolute top-4 right-4 text-emerald-300/60 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="text-center space-y-1">
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Formulir Reservasi</span>
+                <h3 class="text-lg font-bold text-white" id="modal-doc-name">Konsultasi Dokter</h3>
+            </div>
+
+            <form onsubmit="handleConsultSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-emerald-200 mb-1">Nama Pasien</label>
+                    <input type="text" id="consult-patient-name" required placeholder="Nama Lengkap Anda" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-emerald-200 mb-1">Keluhan Utama Kulit</label>
+                    <select id="consult-issue" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-400">
+                        <option value="Jerawat Aktif & Bruntusan">Jerawat Aktif & Bruntusan</option>
+                        <option value="Flek Hitam & Kusam">Flek Hitam & Kusam</option>
+                        <option value="Kulit Kering Kaku & Gatal">Kulit Kering Kaku & Gatal</option>
+                        <option value="Sensitif & Kemerahan">Sensitif & Kemerahan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-emerald-200 mb-1">Upload Foto Kondisi Kulit (Opsional)</label>
+                    <input type="file" accept="image/*" class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3 py-1.5 text-xs text-emerald-300 file:mr-2 file:py-1 file:px-2 file:rounded-lg file:border-0 file:text-[10px] file:bg-emerald-700 file:text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-emerald-200 mb-1">Catatan Tambahan / Skincare yang Sedang Dipakai</label>
+                    <textarea id="consult-notes" rows="2" placeholder="Sebutkan produk saat ini..." class="w-full bg-emerald-950 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-400"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 text-emerald-950 font-bold text-xs hover:brightness-110 transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Kirim & Buka WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Keranjang Belanja -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-emerald-900 border border-emerald-700/60 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closeCartModal()" class="absolute top-4 right-4 text-emerald-300/60 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="flex items-center gap-2 border-b border-emerald-800 pb-3">
+                <i class="fa-solid fa-bag-shopping text-emerald-400"></i>
+                <h3 class="text-lg font-bold text-white">Keranjang Skincare Saya</h3>
+            </div>
+
+            <div id="cart-items-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="border-t border-emerald-800 pt-3 space-y-3">
+                <div class="flex justify-between items-center text-sm font-bold">
+                    <span class="text-emerald-200">Total Belanja:</span>
+                    <span id="cart-total-price" class="text-emerald-300 text-lg">Rp 0</span>
+                </div>
+                <button onclick="checkoutCart()" class="w-full py-3 rounded-xl bg-emerald-400 text-emerald-950 font-bold text-xs hover:bg-emerald-300 transition">
+                    Lanjut ke Pemesanan (Checkout)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
